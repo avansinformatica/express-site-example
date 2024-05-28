@@ -5,8 +5,11 @@ view engine. Take a look at the code to see what happens.
 
 ## Description
 
+This project is a very simple demo of the
+[Express LocalLibrary Example](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Tutorial_local_library_website#im_stuck_where_can_i_get_the_source).
 See
 [Express web framework (Node.js/JavaScript)](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs)
+for the full tutorial.
 
 ## Table of Contents
 
