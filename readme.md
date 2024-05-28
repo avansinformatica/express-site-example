@@ -22,13 +22,13 @@ To install and run the application, follow these steps:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/your-repository.git
+    git clone https://github.com/avansinformatica/express-site-example.git
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd your-repository
+    cd express-site-example
     ```
 
 3. Install the dependencies:
@@ -43,7 +43,8 @@ To install and run the application, follow these steps:
     npm run dev
     ```
 
-    The application will be running at `http://localhost:3000`.
+    The application will be running at
+    [http://localhost:3000](http://localhost:3000).
 
     Check the package.json scripts to see what happens!
 
