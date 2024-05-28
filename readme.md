@@ -1,7 +1,7 @@
-# Project Name
+# Express Site Example
 
 This is a simple vertical slice application using NodeJs, Express, and a Pug
-view engine.
+view engine. Take a look at the code to see what happens.
 
 ## Description
 
