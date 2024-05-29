@@ -47,7 +47,9 @@ To install and run the application, follow these steps:
     ```
 
     The application will be running at
-    [http://localhost:3000](http://localhost:3000).
+    [http://localhost:3000](http://localhost:3000). You can visit the deployed
+    application at
+    [https://avans-express-example.azurewebsites.net](https://avans-express-example.azurewebsites.net).
 
     Check the package.json scripts to see what happens!
 
