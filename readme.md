@@ -5,11 +5,11 @@ view engine. Take a look at the code to see what happens.
 
 ## Description
 
-This project is a very simple demo of the
+This project is a simplified version of the
 [Express LocalLibrary Example](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Tutorial_local_library_website#im_stuck_where_can_i_get_the_source).
-See
+It does not use a database and only lists two dummy book instances. See
 [Express web framework (Node.js/JavaScript)](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs)
-for the full tutorial.
+for the full tutorial and the link to the full code.
 
 ## Table of Contents
 
@@ -58,7 +58,3 @@ Examples and instructions on how to use your project.
 ## Contributing
 
 Guidelines for contributing to your project.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
