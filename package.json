@@ -7,6 +7,14 @@
         "devstart": "nodemon ./bin/www",
         "dev": "SET DEBUG=express-site-example:* & npm run devstart"
     },
+    "nodemonConfig": {
+        "ignore": [
+            "**/test/**",
+            "**/docs/**"
+        ],
+        "ext": "js,json, pug, css",
+        "delay": 2500
+    },
     "dependencies": {
         "cookie-parser": "~1.4.4",
         "debug": "~2.6.9",

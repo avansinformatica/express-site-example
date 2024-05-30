@@ -9,7 +9,7 @@ block content
         li
           a(href=book.url) #{book.title}
           |  (#{book.author.name})
-          p.column= book.summary
+          p= book.summary
 
   else
     p There are no books.
