@@ -1,5 +1,5 @@
 const mysql = require('mysql2')
-const logger = require('../util/logger')
+const logger = require('../../../config/logger')
 require('dotenv').config()
 
 const dbConfig = {

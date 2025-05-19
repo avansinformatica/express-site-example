@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  
+  if movieList.length
+    ul
+      each movie in movieList
+        li
+          a(href="http://www.google.com") #{movie.title}
+          |  (#{movie.release_year})
+          p= movie.description
+
+  else
+    p There are no movies.
