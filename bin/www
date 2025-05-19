@@ -27,7 +27,7 @@ const server = http.createServer(app)
  */
 
 server.listen(port, () => {
-    logger.log(
+    logger.info(
         `This is an example of a NodeJs Express site using the MySql Sakila database.`
     )
 })

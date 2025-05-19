@@ -1,35 +1,11 @@
 // const Book = require("../models/book.model");
 const dbPool = require('../db/dao/mysql-db')
 const logger = require('../../config/logger')
+const movieService = require('../services/movie.service')
 
-const moviesController = {
-    // Deze wordt niet gebruikt, maar is een voorbeeld van hoe je een controller kunt maken
-    index_not_used: (req, res, next) => {
-        const [
-            numBooks,
-            numBookInstances,
-            numAvailableBookInstances,
-            numAuthors
-        ] = [
-            5, // Book.countDocuments({}).exec(),
-            12, // BookInstance.countDocuments({}).exec(),
-            7, // BookInstance.countDocuments({ status: "Available" }).exec(),
-            4 // Author.countDocuments({}).exec(),
-        ]
-
-        res.render('index', {
-            title: 'Local Library Home',
-            book_count: numBooks,
-            book_instance_count: numBookInstances,
-            book_instance_available_count: numAvailableBookInstances,
-            author_count: numAuthors,
-            genre_count: 0, // Placeholder
-            message: 'it works!'
-        })
-    },
-
+const movieController = {
     list: (req, res, next) => {
-        logger.info('moviesController.list() called')
+        logger.info('movieController.list() called')
 
         // Connectie met de database maken
         dbPool.getConnection((err, connection) => {
@@ -52,7 +28,8 @@ const moviesController = {
                 }
 
                 // Hier kun je de resultaten verwerken
-                logger.info('Example result: ', results[0])
+                logger.info(`Found ${results.length} movies.`)
+                logger.info('Results: ', results[0])
 
                 // Render de view met de resultaten
                 res.render('movielist', {
@@ -62,7 +39,41 @@ const moviesController = {
                 })
             })
         })
+    },
+
+    readOne: (req, res, next) => {
+        logger.info(
+            `movieController.readOne for film_id ${req.params.film_id} called`
+        )
+
+        movieService.getOne(req.params.film_id, (err, result) => {
+            if (err) {
+                logger.error('Error getting movie: ', err)
+                return res.status(500).send('Error getting movie')
+            }
+
+            if (result && result.data && result.data.length > 0) {
+                const movie = result.data[0]
+                logger.info('Movie found: ', movie.title)
+                res.render('moviedetails', {
+                    title: movie.title,
+                    movie: movie
+                })
+            } else {
+                logger.warn('Movie not found')
+                res.status(404).send('Movie not found')
+            }
+        })
+    },
+
+    createGet: (req, res, next) => {
+        logger.info('movieController.createGet() called')
+        res.render('error', {
+            title: 'Not implemented',
+            status: 501,
+            message: 'This feature is not implemented yet.'``
+        })
     }
 }
 
-module.exports = moviesController
+module.exports = movieController

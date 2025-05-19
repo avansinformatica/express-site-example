@@ -7,7 +7,7 @@ block content
     ul
       each movie in movieList
         li
-          a(href="http://www.google.com") #{movie.title}
+          a(href="/movies/" + movie.film_id) #{movie.title}
           |  (#{movie.release_year})
           p= movie.description
 

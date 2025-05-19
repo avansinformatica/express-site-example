@@ -1,9 +1,7 @@
-const database = require('../dao/inmem-db')
-const logger = require('../util/logger')
+const logger = require('../../config/logger')
+const db = require('../db/dao/mysql-db')
 
-const db = require('../dao/mysql-db')
-
-const userService = {
+const movieService = {
     create: (user, callback) => {
         logger.info('create user', user)
         database.add(user, (err, data) => {
@@ -53,8 +51,8 @@ const userService = {
         })
     },
 
-    getProfile: (userId, callback) => {
-        logger.info('getProfile userId:', userId)
+    getOne: (film_id, callback) => {
+        logger.info('getOne film_id:', film_id)
 
         db.getConnection(function (err, connection) {
             if (err) {
@@ -64,8 +62,8 @@ const userService = {
             }
 
             connection.query(
-                'SELECT id, firstName, lastName FROM `user` WHERE id = ?',
-                [userId],
+                'SELECT * FROM `film` WHERE `film_id` = ?',
+                [film_id],
                 function (error, results, fields) {
                     connection.release()
 
@@ -75,7 +73,7 @@ const userService = {
                     } else {
                         logger.debug(results)
                         callback(null, {
-                            message: `Found ${results.length} user.`,
+                            message: `Found ${results.length} film.`,
                             data: results
                         })
                     }
@@ -85,4 +83,4 @@ const userService = {
     }
 }
 
-module.exports = userService
+module.exports = movieService

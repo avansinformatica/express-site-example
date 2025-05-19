@@ -16,7 +16,7 @@ const dbConfig = {
     multipleStatements: true
 }
 
-logger.trace(dbConfig)
+// logger.trace(dbConfig)
 
 const pool = mysql.createPool(dbConfig)
 
