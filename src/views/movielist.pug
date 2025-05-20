@@ -2,7 +2,11 @@ extends layout
 
 block content
   h1= title
-  
+
+  a(class='btn btn-primary btn-sm' href='/movies/create') Add a Movie
+
+  div(class='pb-5')
+
   if movieList.length
     ul
       each movie in movieList

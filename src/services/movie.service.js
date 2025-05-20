@@ -62,14 +62,16 @@ const movieService = {
             }
 
             connection.query(
-                'SELECT * FROM `film` WHERE `film_id` = ?',
+                'SELECT * FROM `film` ' +
+                    'INNER JOIN `film_category` ON `film`.`film_id` = `film_category`.`film_id` ' +
+                    ' JOIN `category` ON `category`.`category_id` = `film_category`.`category_id` where film.film_id=?',
                 [film_id],
                 function (error, results, fields) {
                     connection.release()
 
-                    if (error) {
-                        logger.error(error)
-                        callback(error, null)
+                    if (error && error.sqlMessage) {
+                        logger.error(error.sqlMessage)
+                        callback(error.sqlMessage, null)
                     } else {
                         logger.debug(results)
                         callback(null, {

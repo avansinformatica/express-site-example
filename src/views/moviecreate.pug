@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1= title
+
+  div(class='row')
+    div(class='col-md-4 col-sm-12')
+      p Film Title
+
+    div(class='col-md-4 col-sm-12')
+      input(
+        type='text'
+        name='title'
+        value=movie.title
+        class='form-control'
+        placeholder='Film Title'
+        required
+      )
+
+      input(
+        type='checkbox'
+        name='agreement'
+        checked
+        )
+
+
+

@@ -68,10 +68,21 @@ const movieController = {
 
     createGet: (req, res, next) => {
         logger.info('movieController.createGet() called')
-        res.render('error', {
-            title: 'Not implemented',
-            status: 501,
-            message: 'This feature is not implemented yet.'``
+        res.render('moviecreate', {
+            title: 'Create a Movie',
+            movie: {
+                title: 'Blade Runner',
+                description: '',
+                release_year: '',
+                language_id: '',
+                rental_duration: '',
+                rental_rate: '',
+                length: '',
+                replacement_cost: '',
+                rating: '',
+                special_features: ''
+            },
+            status: 200
         })
     }
 }
