@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1= pageTitle
+
+  if rentals.length
+    table(class='table table-striped table-bordered table-hover')
+      thead
+        tr
+          th Rental ID
+          th Movie Title
+          th Release Year
+          th Staff Member
+          th Rental Date 
+      tbody
+        each rental in rentals
+          tr
+            td= rental.rental_id
+            td
+              a(href="/rentals/" + rental.rental_id) #{rental.title}
+            td= rental.release_year
+            td= rental.first_name + " " + rental.last_name
+            td= rental.rental_date.toLocaleDateString("nl-NL")
+
+  else
+    p There are no rentals.

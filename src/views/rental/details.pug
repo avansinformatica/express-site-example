@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  h1= pageTitle
+  
+  if rental
+
+    table(class='table table-bordered')
+      tbody
+        tr 
+          th Rental Info 
+          td 
+            span Rental Date: #{rental.rental_date.toLocaleDateString("nl-NL")}
+            br
+            span Return Date: #{rental.return_date.toLocaleDateString("nl-NL")}
+            br
+            span Last Updated: #{rental.last_update.toLocaleDateString("nl-NL")}
+        tr
+          th.col-4 Movie Information
+          td
+            a(href="/movies/" + rental.film_id) #{rental.title} (#{rental.release_year})
+            p #{rental.description}
+            span(class='text-muted') Features: #{rental.special_features}
+        tr
+          th Staff Member
+          td= rental.first_name + " " + rental.last_name
+            br
+            span(class='text-muted') #{rental.email}
+        tr 
+          th Customer
+          td= rental.customer_first_name + " " + rental.customer_last_name
+            br
+            span(class='text-muted') #{rental.customer_email}
+          
+        tr
+          th Rental Duration
+          td= rental.rental_duration
+        tr
+          th Rental Rate
+          td= rental.rental_rate
+        tr
+          th Replacement Cost
+          td= rental.replacement_cost
+

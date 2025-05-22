@@ -53,12 +53,13 @@ const movieController = {
             }
 
             if (result && result.data && result.data.length > 0) {
-                const movie = result.data[0]
-                logger.info('Movie found: ', movie.title)
-                res.render('moviedetails', {
-                    title: movie.title,
-                    movie: movie
-                })
+                const model = {
+                    pageTitle: result.data[0].title,
+                    movie: result.data[0]
+                }
+                const view = 'moviedetails'
+                logger.info('Movie found: ', model.movie.title)
+                res.render(view, model)
             } else {
                 logger.warn('Movie not found')
                 res.status(404).send('Movie not found')

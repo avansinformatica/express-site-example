@@ -8,6 +8,8 @@ logger.info('Starting the application...')
 const indexRouter = require('./src/routes/index')
 const usersRouter = require('./src/routes/users')
 const movieRouter = require('./src/routes/movie.routes')
+const movieRouterApi = require('./src/routes/movie.routes.api')
+const rentalRoutes = require('./src/routes/rental.routes')
 
 const app = express()
 
@@ -23,6 +25,10 @@ app.use(express.static(path.join(__dirname, 'src', 'public')))
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
 app.use('/movies', movieRouter)
+app.use('/rentals', rentalRoutes)
+
+// API routes
+app.use('/api/movies', movieRouterApi)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
