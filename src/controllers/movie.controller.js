@@ -31,12 +31,14 @@ const movieController = {
                 logger.info(`Found ${results.length} movies.`)
                 logger.info('Results: ', results[0])
 
-                // Render de view met de resultaten
-                res.render('movielist', {
+                const view = 'movie/movie_list'
+                const model = {
                     title: 'List of Movies',
                     message: 'it works!',
                     movieList: results
-                })
+                }
+                // Render de view met de resultaten
+                res.render(view, model)
             })
         })
     },
@@ -54,10 +56,11 @@ const movieController = {
 
             if (result && result.data && result.data.length > 0) {
                 const model = {
-                    pageTitle: result.data[0].title,
-                    movie: result.data[0]
+                    pageTitle: result.data[1].title,
+                    movie: result.data[0][0],
+                    rentalHistory: result.data[1]
                 }
-                const view = 'moviedetails'
+                const view = 'movie/movie_details'
                 logger.info('Movie found: ', model.movie.title)
                 res.render(view, model)
             } else {

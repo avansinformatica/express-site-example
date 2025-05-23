@@ -1,4 +1,4 @@
-extends layout
+extends ../layout
 
 block content
   h1= pageTitle
@@ -14,31 +14,31 @@ block content
             br
             span Return Date: #{rental.return_date.toLocaleDateString("nl-NL")}
             br
-            span Last Updated: #{rental.last_update.toLocaleDateString("nl-NL")}
+            span Last Updated: #{rental.rental_last_update.toLocaleDateString("nl-NL")}
         tr
           th.col-4 Movie Information
           td
-            a(href="/movies/" + rental.film_id) #{rental.title} (#{rental.release_year})
-            p #{rental.description}
+            a(href="/movies/" + rental.film_film_id) #{rental.film_title} (#{rental.release_year})
+            p #{rental.film_description}
             span(class='text-muted') Features: #{rental.special_features}
         tr
           th Staff Member
-          td= rental.first_name + " " + rental.last_name
+          td= rental.staff_first_name + " " + rental.staff_last_name
             br
-            span(class='text-muted') #{rental.email}
+            span(class='text-muted') #{rental.staff_email}
         tr 
           th Customer
           td= rental.customer_first_name + " " + rental.customer_last_name
             br
-            span(class='text-muted') #{rental.customer_email}
+            span(class='text-muted') #{rental.customer_email.toLowerCase()}
           
         tr
           th Rental Duration
-          td= rental.rental_duration
+          td #{rental.rental_duration} weeks
         tr
           th Rental Rate
-          td= rental.rental_rate
+          td $ #{rental.rental_rate}
         tr
           th Replacement Cost
-          td= rental.replacement_cost
+          td $ #{rental.replacement_cost}
 

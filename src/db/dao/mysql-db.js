@@ -16,8 +16,6 @@ const dbConfig = {
     multipleStatements: true
 }
 
-// logger.trace(dbConfig)
-
 const pool = mysql.createPool(dbConfig)
 
 pool.on('connection', function (connection) {

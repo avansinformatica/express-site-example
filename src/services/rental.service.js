@@ -69,7 +69,13 @@ const rentalService = {
             }
 
             connection.query(
-                'SELECT * from `rental` ' +
+                'SELECT rental_id, rental_date, return_date, rental.last_update as rental_last_update, rental.inventory_id, ' +
+                    'customer.customer_id, `customer`.first_name AS customer_first_name, `customer`.last_name AS customer_last_name, customer.email as customer_email,' +
+                    'staff.staff_id, staff.first_name AS staff_first_name, staff.last_name AS staff_last_name, staff.email as staff_email, ' +
+                    'staff.store_id AS staff_store_id, ' +
+                    'film.film_id as film_film_id, film.title AS film_title, film.description AS film_description, special_features, release_year, ' +
+                    'rental_duration, rental_rate, replacement_cost ' +
+                    'FROM `rental` ' +
                     'INNER JOIN `inventory` ON `rental`.`inventory_id` = `inventory`.`inventory_id` ' +
                     'INNER JOIN `film` ON `inventory`.`film_id` = `film`.`film_id` ' +
                     'INNER JOIN `customer` ON `rental`.`customer_id` = `customer`.`customer_id` ' +
@@ -78,8 +84,7 @@ const rentalService = {
                     'INNER JOIN `address` ON `store`.`address_id` = `address`.`address_id` ' +
                     'INNER JOIN `city` ON `address`.`city_id` = `city`.`city_id` ' +
                     'INNER JOIN `country` ON `city`.`country_id` = `country`.`country_id` ' +
-                    'WHERE `rental`.`rental_id` = ?',
-                [rental_id],
+                    [rental_id],
                 function (error, results, fields) {
                     connection.release()
 

@@ -18,7 +18,7 @@ const rentalController = {
                     pageTitle: 'List of Rentals',
                     rentals: result.data
                 }
-                const view = 'rental/list'
+                const view = 'rental/rental_list'
                 logger.info(model.rentals.length, `rentals found`)
                 res.render(view, model)
             } else {
@@ -46,7 +46,7 @@ const rentalController = {
                     pageTitle: 'Rental Details',
                     rental: result.data[0]
                 }
-                const view = 'rental/details'
+                const view = 'rental/rental_details'
                 logger.info('rental found: ', model.rental.title)
                 res.render(view, model)
             } else {

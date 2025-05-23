@@ -1,0 +1,45 @@
+extends ../layout
+
+block content
+  h1= pageTitle
+  
+  if movie
+    p Movie ID: !{movie.film_id}
+    p Category: !{movie.name}
+
+    h2 Rental Info
+
+    table(class='table table-bordered')
+      tbody
+        tr 
+          th Rental Info 
+          td test 
+        tr
+          th.col-4 Movie Information
+          td
+            a(href="/movies/" + movie.film_id) #{movie.title} (#{movie.release_year})
+            p #{movie.description}
+            span(class='text-muted') Features: #{movie.special_features}
+
+    h2 Rental History
+    if rentalHistory && rentalHistory.length > 0
+      table(class='table table-bordered')
+        thead
+          tr
+            th Rental ID
+            th Rental Date
+            th Return Date
+            th Last Updated
+            th Staff Member
+            th Customer
+        tbody
+          each rental in rentalHistory
+            tr
+              td #{rental.rental_id}
+              td #{rental.rental_date}
+              td #{rental.return_date}
+              td #{rental.rental_last_update}
+              td rental staff_last_name
+              td rental customer_first_name
+    else
+      p There are no previous rentals for this movie.
